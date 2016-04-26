@@ -1,0 +1,86 @@
+package com.VideoContentTests;
+
+import static com.ResourceIngester.brightcoveToken;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringWriter;
+import java.net.URL;
+import java.net.URLConnection;
+
+import noNamespace.DisplayNameReferenceIdDocument;
+
+import org.apache.commons.io.IOUtils;
+import org.apache.xmlbeans.XmlException;
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+public class ValidateNbdeDisplayNameReferenceIdTest {
+	
+	static DisplayNameReferenceIdDocument DisplayNameReferenceIdDoc;
+    static DisplayNameReferenceIdDocument.DisplayNameReferenceId displayNameReferenceId;
+    static DisplayNameReferenceIdDocument.DisplayNameReferenceId.Test[] tests;
+    static String absolutePath = new File("").getAbsolutePath();
+    static String pathToXML = absolutePath + "/src/test/java/com/VideoContentTests/resources/displayNameReferenceId.xml";
+
+    static String url1  = "http://api.brightcove.com/services/library?command=search_videos&any=display_name:";
+    static String url2  = "&video_fields=name,referenceId&token=";
+    static String token = brightcoveToken();
+    static String charset = "UTF-8";
+
+    @DataProvider(name = "videos")
+    public static Object[][] getTestParameters() throws IOException, XmlException {
+        //Grab an XML file
+        File refIdFile = new File(pathToXML);
+
+        //Get an array of all the XML elements in that file
+        DisplayNameReferenceIdDoc = DisplayNameReferenceIdDocument.Factory.parse(refIdFile);
+        displayNameReferenceId = DisplayNameReferenceIdDoc.getDisplayNameReferenceId();
+        tests = displayNameReferenceId.getTestArray();
+
+        //For each element in the XML array, put all the sub-elements into a new array of arrays
+        int i;
+        Object[][] elements = new Object[tests.length][2];
+        for (i = 0; i < tests.length; i++) {
+            elements[i][0] = tests[i].getDisplayName();
+            elements[i][1] = tests[i].getRefId();
+        }
+
+        //Pass the array of arrays as a list to the test runner
+        return (elements);
+    }
+
+
+    @Test(dataProvider = "videos")
+    public void test(String displayNameInput, String refIdExpected) throws IOException {
+        // send the API URL with 'displayNameInput', validate result for 'refIdExpected'
+        URLConnection connection = new URL(url1 + displayNameInput + url2 + token).openConnection();
+        connection.setRequestProperty("Accept-Charset", charset);
+        InputStream response = connection.getInputStream();
+        StringWriter writer = new StringWriter();
+        IOUtils.copy(response, writer);
+        String responseString = writer.toString();
+//        System.out.println(responseString);
+        String s1 = String.format("\"name\":\"%s\",\"referenceId\":\"%s\"", displayNameInput, refIdExpected);
+        Assert.assertTrue(responseString.contains(s1), "found expected name/id pair in API response");
+    }
+
+    @Test(dataProvider = "videos")
+    public void testFast(String displayNameInput, String refIdExpected) throws IOException {
+        // send the API URL with 'displayNameInput', validate result for 'refIdExpected'
+        URLConnection connection = new URL(url1 + displayNameInput + url2 + token).openConnection();
+        String displayNameInputFast = String.format("%s_140",displayNameInput);
+        String refIdExpectedFast = String.format("%s_150",refIdExpected);
+        connection.setRequestProperty("Accept-Charset", charset);
+        InputStream response = connection.getInputStream();
+        StringWriter writer = new StringWriter();
+        IOUtils.copy(response, writer);
+        String responseString = writer.toString();
+//      System.out.println(responseString);
+        String s2 = String.format("\"name\":\"%s\",\"referenceId\":\"%s\"", displayNameInputFast, refIdExpectedFast);
+        Assert.assertTrue(responseString.contains(s2), "found expected name/id pair in API response");
+    }
+
+}

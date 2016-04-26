@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+			<item value="com.kaplan.med"/>
+			<item value="kaplan.med.cs"/>
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+			<item value="com.kaplan.med"/>
+			<item value="kaplan.med.cs"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="ciManagementUrl">
+		</list>
+		<list key="ciManagementSystem">
+		</list>
+		<list key="issueManagementSystem">
+		</list>
+		<list key="issueManagementUrl">
+		</list>
+	</section>
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="C:\Projects\kaptest\workspace\Qid\TestNGProject\src\qidsTest"/>
+			<item value="C:\Projects\kaptest\workspace\sendEmailNotification"/>
+			<item value="C:\Projects\Other Projects\ptc"/>
+			<item value="C:\Users\AbRahman\Desktop\New folder\Copy of flexplm(2)"/>
+			<item value="C:\Users\AbRahman\Desktop\javacode\JasperWP.Tests-master\S1HY"/>
+			<item value="C:\Projects\kaptest\workspace\S1HY"/>
+			<item value="C:\Users\kaptest\workspace\JasperWP.Tests\S1HY\repo"/>
+			<item value="C:\Users\AbRahman\Desktop\javacode\JasperWP.Tests-master"/>
+			<item value="C:\Users\kaptest\workspace\JasperWP.Tests"/>
+			<item value="C:\Users\kaptest\workspace\JasperWP.Tests\S1HY"/>
+			<item value="C:\Users\AbRahman\Desktop\JasperWP.Tests"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArchetypePage">
+		<item value="All Catalogs" key="catalog"/>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="C:\Projects\kaptest\workspace\kaplan.health.med\src\main\java"/>
+			<item value="C:\Projects\kaptest\workspace\testImage"/>
+			<item value="C:\Projects\kaptest\workspace"/>
+			<item value="C:\Projects\kaptest\workspace\NursingReportsFramework\src\test\java\com\kaplan\qa\nursing\test"/>
+			<item value="C:\Users\kaptest\workspace\kaplanHealth"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="package">
+		</list>
+		<list key="groupId">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+</section>

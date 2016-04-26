@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Selenium TestNG Suite" parallel="tests">
+
+	<test name="Regression" preserve-order="true">
+		<classes>
+		<class name="med.jasper.regression.DisplayVideotitle"></class>
+		<class name="med.jasper.regression.DisplayQuizTitle"></class>
+		<class name="med.OLP.regression.OLPHomePage"></class>
+		<class name="med.OLP.regression.RegressionForOLPProducts"></class>
+		</classes>
+
+	</test>
+	
+	<listeners>
+      <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+      <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+  </listeners>
+
+</suite>

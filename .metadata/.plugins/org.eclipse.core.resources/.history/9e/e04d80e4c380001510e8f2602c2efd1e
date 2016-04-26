@@ -1,0 +1,78 @@
+package testImage;
+
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class WriteExcel {
+    private static final String FILE_PATH = "C:\\Users\\AbRahman\\Desktop\\TimeVerification.xlsx";
+
+    private static final WriteExcel INSTANCE = new WriteExcel();
+
+    public static WriteExcel getInstance() {
+        return INSTANCE;
+    }
+
+    private WriteExcel() {
+    }
+
+    public static void main(String args[]){
+
+      /*  List studentList = new ArrayList();
+        studentList.add(new Student("William","90","100","80"));
+        studentList.add(new Student("Smith","60","60","90"));
+        studentList.add(new Student("James","100","100","100"));
+*/
+        writeStudentsListToExcel();
+
+    }
+
+    public static void writeStudentsListToExcel(){
+
+        // Using XSSF for xlsx format, for xls use HSSF
+        Workbook workbook = new XSSFWorkbook();
+
+        Sheet studentsSheet = workbook.createSheet("Students");
+
+       int rowIndex = 1;
+       for (int i = 1; i < 4; i++){
+            Row row = studentsSheet.createRow(rowIndex++);
+            int cellIndex = 0;
+            //first place in row is name
+            row.createCell(2).setCellValue("Pass");
+
+            //second place in row is marks in maths
+            row.createCell(3).setCellValue("Fail");
+
+            //third place in row is marks in Science
+            row.createCell(cellIndex++).setCellValue("not null");
+
+            //fourth place in row is marks in English
+            row.createCell(cellIndex++).setCellValue("pass");
+
+        }
+
+        //write this workbook in excel file.
+        try {
+            FileOutputStream fos = new FileOutputStream(FILE_PATH);
+            workbook.write(fos);
+            fos.close();
+
+            System.out.println(FILE_PATH + " is successfully written");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+}

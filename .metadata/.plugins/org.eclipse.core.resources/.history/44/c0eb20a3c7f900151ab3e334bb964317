@@ -1,0 +1,242 @@
+package testImage;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+public class TestNusringNITUX {
+	
+	
+	private WebDriver driver ;
+		String subName;
+		String modName;
+		String titleName;
+		String titleString;
+		String chapName;
+		String eleName;
+		/*
+
+		public TestNusringNITUX(WebDriver driver){
+			this.driver= driver;	
+		}
+		*/
+		public void setUserName(String uName){
+			WebElement setName = driver.findElement(By.id("username"));
+			setName.clear();
+			setName.sendKeys(uName);
+		}
+		
+		public void setPwd(String pwd){
+			WebElement setName = driver.findElement(By.id("password"));
+			setName.clear();
+			setName.sendKeys(pwd);
+		}
+		
+		public void clickLogIn(){
+			WebElement clickLogIn = driver.findElement(By.xpath(".//*[@id='faculty-signin']"));
+			clickLogIn.click();
+		}
+
+		public void clickOnScheduleanIntegratedTest(){
+			WebElement clickOnSubName = driver.findElement(By.xpath("//div[1]/nav/ul/li[1]/a"));
+			waitFor(2);
+			System.out.println("Checking : "+ clickOnSubName.getText());
+			clickOnSubName.click();
+		}
+		
+		public void clickOnChoosebySubject(){
+			waitFor(5);
+			int subName = driver.findElements(By.xpath("//choose-test/main/div/div/div[1]/button")).size();
+			System.out.println("Checking Number : "+subName);
+			if(subName>0){
+				WebElement clickOnSubName = driver.findElement(By.xpath("//choose-test/main/div/div/div[1]/button"));
+				waitFor(2);
+				eleName = clickOnSubName.getText();
+				clickOnSubName.click();
+			}
+		}
+		
+		
+		public void clickOnChooseatestbysubject(String item){
+			clickOnChoosebySubject();
+			int subName = driver.findElements(By.xpath("//a/span[1][text()='" + item +"']")).size();
+			System.out.println("Choose by subject name number : "+subName);	
+			if(subName>0){
+				WebElement clickOnSubName = driver.findElement(By.xpath("//a/span[1][text()='" + item +"']"));
+				waitFor(2);
+				//subName = clickOnSubName.getText();
+				clickOnSubName.click();
+			}
+		}
+		
+		public void clickOnTestName(String testName)
+		{
+			for (int i = 1; i < 1500; i++) {
+				int testNameconf = driver.findElements(By.xpath(".//*[@id='chooseTestTable']//tr[" +i + "]/td[1]")).size();
+			
+				if (testNameconf > 0) {
+					waitFor(3);
+					WebElement testNameText = driver.findElement(By.xpath(".//*[@id='chooseTestTable']//tr[" +i + "]/td[1]"));
+					String testNameVal = testNameText.getText();
+					
+					if(testName.equalsIgnoreCase(testNameVal)){
+						System.out.println("Test name matched :" +testNameVal);
+						
+						WebElement selecttestName = driver.findElement(By.xpath(".//*[@id='chooseTestTable']//tr[" +i + "]/td[6]"));
+						selecttestName.click();
+						break;
+					}
+				} else {
+					System.out.println("Element Not found !!!!");
+					break;
+				}
+			}
+		}
+		public void clickOnStartDate(String startDate){
+			WebElement clickStartDate = driver.findElement(By.xpath(".//*[@id='startDate']"));
+			clickStartDate.clear();
+			clickStartDate.sendKeys(startDate);
+			clickStartDate.sendKeys(Keys.TAB);
+		}
+		
+		public void clickOnStartTime(String startTime){
+			WebElement clickStartDate = driver.findElement(By.xpath(".//*[@id='startTime']"));
+			clickStartDate.clear();
+			clickStartDate.sendKeys(startTime);
+			clickStartDate.sendKeys(Keys.TAB);
+			//clickLogIn.click();
+		}
+		public void clickOnEndTimeTime(String endTime){
+			WebElement clickStartDate = driver.findElement(By.xpath(".//*[@id='endTime']"));
+			clickStartDate.clear();
+			clickStartDate.sendKeys(endTime);
+			clickStartDate.sendKeys(Keys.TAB);
+			//clickLogIn.click();
+		}
+		
+		public void clickOnenddate(String endDate){
+			WebElement clickStartDate = driver.findElement(By.xpath(".//*[@id='endDate']"));
+			
+			clickStartDate.clear();
+			clickStartDate.sendKeys(endDate);
+			clickStartDate.sendKeys(Keys.TAB);
+				
+			
+		}
+		
+		public void clickOnAddstudent(){
+			WebElement clickStartDate = driver.findElement(By.xpath(".//*[@id='scheduleTest']/button"));
+			clickStartDate.click();
+		}
+		
+		public void clickOnChooseDateandTime (){
+			WebElement clickStartDate = driver.findElement(By.xpath(".//*[@id='chooseDate']"));
+			clickStartDate.click();
+		}
+		
+		public void clickOnToplink(String textRNPN){
+			int subName = driver.findElements(By.xpath("//choose-institution/main/div/h2")).size();
+			if(subName>0){
+				if(textRNPN.equalsIgnoreCase("rn")){
+					
+					WebElement selecttestName = driver.findElement(By.xpath("//div/div[1]/div[1]/button"));
+					selecttestName.click();
+				}
+			} else {
+				WebElement selecttestName = driver.findElement(By.xpath("//main/div/div[1]/div[2]/button"));
+				selecttestName.click();
+			}
+		}
+		//http://qa-nit.kaptest.com/#/choose-institution/Home/choose-test/1446/1453
+//*************************************Utility**********************************
+		public void waitFor(int sec){
+			  try {
+				Thread.sleep(sec*1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		  }
+		
+//********************************************************************************
+		@Test
+		public void test1()throws Exception {
+			waitFor(2);
+			setUserName("swapna.muppidi@kaplan.com");
+			waitFor(2);
+			setPwd("Kaplan8$");
+			waitFor(3);
+			clickLogIn();
+			waitFor(5);
+			clickOnScheduleanIntegratedTest();
+			waitFor(2);
+			clickOnChooseatestbysubject("Community");
+			waitFor(3);
+			clickOnTestName("Community 104");
+			waitFor(3);
+			clickOnChooseDateandTime ();
+			waitFor(3);
+			clickOnStartDate("04/04/2016");
+			waitFor(3);
+			clickOnStartTime("9:00am");
+			waitFor(3);
+			clickOnEndTimeTime("12:30pm");
+			waitFor(3);
+			clickOnenddate("04/04/2016");
+			waitFor(3);
+			clickOnAddstudent();
+			waitFor(30);
+		}
+
+//******************************************************************************** 
+	@BeforeMethod
+	public void beforeMethod() {
+		/*if(driver==null){
+            driver = new FirefoxDriver();
+        }*/
+		//FirefoxProfile profile = new FirefoxProfile(); //FirefoxDriver
+		//profile.setPreference("browser.cache.disk.enable", false);
+		//driver = new FirefoxDriver(profile); 
+		//File chromeDriverFile = new File(System.getProperty("user.dir") +  "/drivers/32/chromedriver.exe");
+		//System.setProperty("webdriver.chrome.driver", chromeDriverFile.getAbsolutePath());
+		
+		System.setProperty("webdriver.chrome.driver","C:\\DevTools\\Browser\\chromedriver.exe");// chromedriver
+		driver = new ChromeDriver();
+		waitFor(5);
+		driver.navigate().to("https://qa-nit.kaptest.com");
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
+		/*DesiredCapabilities caps = DesiredCapabilities.internetExplorer();//IEDriverServer
+		System.setProperty("webdriver.ie.driver","C:\\DevTools\\Browser\\IEDriverServer.exe");
+		caps.setCapability("ignoreZoomSetting", true);
+		caps.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+		caps.setCapability("requireWindowFocus",true);
+		caps.setCapability("nativeEvents", false);
+		driver = new InternetExplorerDriver(caps);
+		driver.navigate().to("https://qa-nit.kaptest.com");
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		*/
+		/*driver = new FirefoxDriver();
+		driver.manage().window().maximize();
+		driver.navigate().to("https://qa-nit.kaptest.com");
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);*/
+		driver.manage().window().maximize();
+	}
+
+		@AfterMethod
+		public void afterMethod() {
+			driver.quit();
+		}
+}

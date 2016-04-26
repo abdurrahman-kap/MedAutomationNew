@@ -1,0 +1,96 @@
+package kaplan.health.jasper.test;
+
+import org.testng.annotations.Test;
+
+public class DisplayVideotitle extends BaseScript{
+	
+	@Test
+	public void VerifyDisplayBiochemistryVideotitle(){
+		openOPLLogInPage().logInOLPPage("arahman", "arahman", "USMLEStep1HYOnlinePrepHTML");
+		homepage().verifyDisplayBiochemistryVideotitle();
+	}
+	
+	@Test
+	public void VerifyDisplayPharmacologyVideotitle(){
+		openOPLLogInPage().logInOLPPage("arahman", "arahman", "USMLEStep1HYOnlinePrepHTML");
+		homepage().verifyDisplayPharmacologyVideotitle();
+	}
+	
+	@Test
+	public void VerifyDisplayImmunologyVideotitle(){
+		openOPLLogInPage().logInOLPPage("arahman", "arahman", "USMLEStep1HYOnlinePrepHTML");
+		homepage().verifyDisplayImmunologyVideotitle();
+	}
+	
+	@Test
+	public void VerifyDisplayInfectiousDiseaseVideotitle(){
+		openOPLLogInPage().logInOLPPage("arahman", "arahman", "USMLEStep1HYOnlinePrepHTML");
+		homepage().verifyDisplayInfectiousDiseaseVideotitle();
+	}
+	
+	@Test
+	public void VerifyDisplayEpidemiologyVideotitle(){
+		openOPLLogInPage().logInOLPPage("arahman", "arahman", "USMLEStep1HYOnlinePrepHTML");
+		homepage().verifyDisplayEpidemiologyVideotitle();
+	}
+	
+	@Test
+	public void VerifyDisplayBehavioralMedicineVideotitle(){
+		openOPLLogInPage().logInOLPPage("arahman", "arahman", "USMLEStep1HYOnlinePrepHTML");
+		homepage().verifyDisplayBehavioralMedicineVideotitle();
+	}
+	
+	@Test
+	public void VerifyDisplayNeuroscienceVideotitle(){
+		openOPLLogInPage().logInOLPPage("arahman", "arahman", "USMLEStep1HYOnlinePrepHTML");
+		homepage().verifyDisplayNeuroscienceVideotitle();
+	}
+	
+	@Test
+	public void VerifyDisplayMusculoskeletalVideotitle(){
+		openOPLLogInPage().logInOLPPage("arahman", "arahman", "USMLEStep1HYOnlinePrepHTML");
+		homepage().verifyDisplayMusculoskeletalVideotitle();
+	}
+	
+	public void VerifyDisplayRespiratoryMedicineVideotitle(){
+		openOPLLogInPage().logInOLPPage("arahman", "arahman", "USMLEStep1HYOnlinePrepHTML");
+		homepage().verifyDisplayRespiratoryMedicineVideotitle();
+	}
+	
+	@Test
+	public void VerifyDisplayCardiologyVideotitle(){
+		openOPLLogInPage().logInOLPPage("arahman", "arahman", "USMLEStep1HYOnlinePrepHTML");
+		homepage().verifyDisplayCardiologyVideotitle();
+	}
+	
+	@Test
+	public void VerifyDisplayGastroenterologyVideotitle(){
+		openOPLLogInPage().logInOLPPage("arahman", "arahman", "USMLEStep1HYOnlinePrepHTML");
+		homepage().verifyDisplayGastroenterologyVideotitle();
+	}
+	
+	@Test
+	public void VerifyDisplayEndocrinologyVideotitle(){
+		openOPLLogInPage().logInOLPPage("arahman", "arahman", "USMLEStep1HYOnlinePrepHTML");
+		homepage().verifyDisplayEndocrinologyVideotitle();
+	}
+	
+	@Test
+	public void VerifyDisplayNephrologyVideotitle(){
+		openOPLLogInPage().logInOLPPage("arahman", "arahman", "USMLEStep1HYOnlinePrepHTML");
+		homepage().verifyDisplayNephrologyVideotitle();
+	}
+	
+	@Test
+	public void VerifyDisplayReproductiveMedicineVideotitle(){
+		openOPLLogInPage().logInOLPPage("arahman", "arahman", "USMLEStep1HYOnlinePrepHTML");
+		homepage().verifyDisplayReproductiveMedicineVideotitle();
+	}
+	
+	@Test
+	public void Verify(){
+		openOPLLogInPage().logInOLPPage("arahman", "arahman", "USMLEStep1HYOnlinePrepHTML");
+		homepage().verifytime();
+	}
+
+}

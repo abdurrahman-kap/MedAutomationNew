@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;testImage/src/test/java/health.med&apos;&#x0D;&#x0A;- Original project: &apos;ptc&apos;&#x0D;&#x0A;- Destination element: &apos;testImage/src/test/java/health.med&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     com.homedepot.ptc.framework.robot.MouseModifiers.java&#x0D;&#x0A;     com.homedepot.ptc.framework.robot.RobotService.java" description="Copy compilation units" destination="=testImage/src\/test\/java&lt;health.med" element1="/src\/main\/java&lt;com.homedepot.ptc.framework.robot{MouseModifiers.java" element2="/src\/main\/java&lt;com.homedepot.ptc.framework.robot{RobotService.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1436125103626" units="2" version="1.0"/>
+</session>

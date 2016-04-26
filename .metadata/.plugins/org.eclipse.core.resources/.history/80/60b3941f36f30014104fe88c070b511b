@@ -1,0 +1,275 @@
+package com.VideoContentTests;
+
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
+import org.apache.xmlbeans.XmlException;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.simple.parser.ParseException;
+import org.junit.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+import pagerefs.PagerefsDocument;
+
+import java.io.*;
+import java.net.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+public class ValidatePageReferencesTest {
+
+    static PagerefsDocument pagerefsDocument;
+    static PagerefsDocument.Pagerefs pagerefs;
+    static PagerefsDocument.Pagerefs.Test[] tests;
+
+    static String absolutePath = new File("").getAbsolutePath();
+    static String pathToXML = absolutePath + "/src/test/java/com/VideoContentTests/resources/all_pagerefs.xml";
+
+    public HttpURLConnection connection;
+    static DataOutputStream outStream;
+    static BufferedReader inStream;
+    public CookieManager cookieManager = new CookieManager();
+    static String COOKIE_HEADER = "Set-Cookie";
+
+    static String domain = "jasperwp.qa.kaplan.com";
+    static String loginPost = "<login userName='pwells' password='pwells' rememberLogin='no' instance='' "
+            + "productName='USMLEStep1HYOnlinePrepHTML' assetName='main' />";
+
+    @BeforeClass
+    public void createOLPSessions() throws IOException {
+
+        URL url = new URL("http://"+domain+"/loginv8.aspx");
+        CookieHandler.setDefault(cookieManager);
+        connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setDoInput(true);
+        connection.setDoOutput(true);
+        connection.setUseCaches(true);
+        connection.setInstanceFollowRedirects(false);
+        connection.setRequestProperty("Content-Type", "text/plain;charset=UTF-8");
+        connection.setRequestProperty("Content-Length", ""+ Integer.toString(loginPost.getBytes().length));
+
+        outStream = new DataOutputStream(connection.getOutputStream());
+
+        outStream.writeBytes(loginPost);
+
+        inStream = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+
+        Map<String, List<String>> headerFields = connection.getHeaderFields();
+        List<String> cookiesHeader = headerFields.get(COOKIE_HEADER);
+
+        if(cookiesHeader != null) {
+            for(String cookie : cookiesHeader) {
+                cookie = cookie.replace("; path=/", "");
+                cookieManager.getCookieStore().add(null, HttpCookie.parse(cookie).get(0));
+            }
+        } else {
+            System.out.println("No cookies stored!!");
+        }
+        outStream.flush();
+        outStream.close();
+
+        // Have to disconnect here so we can set cookie properties before we re-open in the test case
+        connection.disconnect();
+
+        if(cookieManager.getCookieStore().getCookies().size() > 0) {
+            connection.setRequestProperty("Cookie",
+                    StringUtils.join(cookieManager.getCookieStore().getCookies(), ","));
+        }
+    }
+
+    @DataProvider(name = "videos")
+    public static Object[][] getTestParameters() throws IOException, XmlException {
+        // Grab an XML file
+        File pagerefsFile = new File(pathToXML);
+
+        // Get an array of arrays containing XML elements in the source file
+        pagerefsDocument = PagerefsDocument.Factory.parse(pagerefsFile);
+        pagerefs = pagerefsDocument.getPagerefs();
+        tests = pagerefs.getTestArray();
+
+        // For each element in the XML array, put all the sub-elements into a new array of arrays
+        int i;
+        Object[][] elements = new Object[tests.length][12];
+        for(i = 0; i < tests.length; i++) {
+            elements[i][0] = tests[i].getSubject();
+            elements[i][1] = tests[i].getDiscipline();
+            elements[i][2] = tests[i].getTopic();
+            elements[i][3] = tests[i].getRefId();
+            elements[i][4] = tests[i].getFA2014();
+            elements[i][5] = tests[i].getFA2013();
+            elements[i][6] = tests[i].getFA2012();
+            elements[i][7] = tests[i].getFA2011();
+            elements[i][8] = tests[i].getME4E();
+            elements[i][9] = tests[i].getME3E();
+            elements[i][10]= tests[i].getPathoma();
+            elements[i][11]= tests[i].getSeekpoint();
+        }
+        return elements;
+    }
+
+    @Test(dataProvider = "videos")
+    public void pagerefsAreAccurate(
+            String subject,
+            String discipline,
+            String topic,
+            String refId,
+            String fa2014,
+            String fa2013,
+            String fa2012,
+            String fa2011,
+            String me4e,
+            String me3e,
+            String pathoma,
+            String seekpoint
+    ) throws IOException, JSONException, ParseException {
+
+        // Send webservice call, get response
+        URL seekpointURL = new URL("http://"+domain+"/api/mediaitem?path=/S1HY/"+subject+"/"
+                +discipline+"/"+topic+"/"+refId);
+        connection = (HttpURLConnection) seekpointURL.openConnection();
+        InputStream response = connection.getInputStream();
+        StringWriter writer = new StringWriter();
+        IOUtils.copy(response, writer);
+        String responseString = writer.toString();
+
+        // Parse response
+        //Turn whole string into an object:
+        JSONObject object = new JSONObject(responseString);
+
+        // Get array of seekpoints objects (probably one value in the object)
+        JSONArray returnedSeekpoints = object.getJSONArray("seekPoints");
+
+        // For each group of seekpoint objects...
+        for(int i = 0; i < returnedSeekpoints.length(); i++) {
+
+            // Grab all the elements of the seekpoint:
+            JSONObject seekpointElements = returnedSeekpoints.getJSONObject(i);
+
+            // Turn the seekpoint title into a String
+            String returnedSeekpointTitle = seekpointElements.getString("title");
+            if(returnedSeekpointTitle.equals(seekpoint)) {
+
+                // Turn the bookReferences element into an array of objects:
+                JSONArray theseBookReferences = seekpointElements.getJSONArray("bookReferences");
+
+                // Create a similar array of expected bookReferences
+                ArrayList<JSONObject> expectedBookReferences = new ArrayList<>();
+                JSONObject thisBookReference = new JSONObject();
+                if(!fa2014.equals("NA")) {
+                    thisBookReference.put("bookTitle", "First Aid 2014");
+                    thisBookReference.put("pageNumbers", fa2014);
+                    expectedBookReferences.add(thisBookReference);
+                }
+                if(!fa2013.equals("NA")) {
+                    thisBookReference.put("bookTitle", "First Aid 2013");
+                    thisBookReference.put("pageNumbers", fa2013);
+                    expectedBookReferences.add(thisBookReference);
+                }
+                if(!fa2012.equals("NA")) {
+                    thisBookReference.put("bookTitle", "First Aid 2012");
+                    thisBookReference.put("pageNumbers", fa2012);
+                    expectedBookReferences.add(thisBookReference);
+                }
+                if(!fa2011.equals("NA")) {
+                    thisBookReference.put("bookTitle", "First Aid 2011");
+                    thisBookReference.put("pageNumbers", fa2011);
+                    expectedBookReferences.add(thisBookReference);
+                }
+                if(!me4e.equals("NA")) {
+                    thisBookReference.put("bookTitle", "MedEssentials 4th Ed");
+                    thisBookReference.put("pageNumbers", me4e);
+                    expectedBookReferences.add(thisBookReference);
+                }
+                if(!me3e.equals("NA")) {
+                    thisBookReference.put("bookTitle", "MedEssentials 3rd Ed");
+                    thisBookReference.put("pageNumbers", me3e);
+                    expectedBookReferences.add(thisBookReference);
+                }
+                if(!pathoma.equals("NA")) {
+                    thisBookReference.put("bookTitle", "Pathoma");
+                    thisBookReference.put("pageNumbers", pathoma);
+                    expectedBookReferences.add(thisBookReference);
+                }
+                ArrayList<JSONObject> expectedBookReferencesArray = expectedBookReferences;
+                ArrayList<JSONObject> theseBookReferencesArray = new ArrayList<>();
+                if (theseBookReferences != null) {
+                    int len = theseBookReferences.length();
+                    for (int q = 0; q < len; q++) {
+                        theseBookReferencesArray.add((JSONObject) theseBookReferences.get(q));
+                    }
+                }
+                System.out.println("=====start");
+                System.out.println(subject+"|"+discipline+"|"+topic+"|"+refId+"|"+seekpoint);
+                System.out.println("expectedBookReferenceArray was " + expectedBookReferencesArray);
+                System.out.println("theseBookReferencesArray was " + theseBookReferencesArray.toString());
+                System.out.println("=====end");
+
+//                Experimental:
+//                Assert.assertTrue("bookReference set mismatch for " + seekpoint,
+//                        Arrays.deepEquals(expectedBookReferencesArray.toArray(), theseBookReferencesArray.toArray()));
+
+
+
+
+                // For each object in the bookReferences array...
+                assert theseBookReferences != null;
+                for (int k = 0; k < theseBookReferences.length(); k++) {
+
+                    // Turn the book reference elements into an object:
+                    JSONObject innerBookReference = theseBookReferences.getJSONObject(k);
+
+                    // Get the book title:
+                    String returnedTitle = innerBookReference.getString("bookTitle");
+//                    System.out.println(returnedTitle);
+
+                    // Get the page reference:
+                    String returnedPageNumbers = innerBookReference.getString("pageNumbers");
+//                    System.out.println(returnedPageNumbers);
+
+                        switch (returnedTitle) {
+                            case "First Aid 2014":
+                                Assert.assertTrue("First Aid 2014 was provided, something was returned", !fa2014.equals("NA"));
+                                Assert.assertEquals(seekpoint + ", " + returnedTitle, fa2014, returnedPageNumbers);
+                                break;
+                            case "First Aid 2013":
+                                Assert.assertTrue("First Aid 2013 was provided, something was returned", !fa2013.equals("NA"));
+                                Assert.assertEquals(seekpoint + ", " + returnedTitle, fa2013, returnedPageNumbers);
+                                break;
+                            case "First Aid 2012":
+                                Assert.assertTrue("First Aid 2012 was provided, something was returned", !fa2012.equals("NA"));
+                                Assert.assertEquals(seekpoint + ", " + returnedTitle, fa2012, returnedPageNumbers);
+                                break;
+                            case "First Aid 2011":
+                                Assert.assertTrue("First Aid 2011 was provided, something was returned", !fa2011.equals("NA"));
+                                Assert.assertEquals(seekpoint + ", " + returnedTitle, fa2011, returnedPageNumbers);
+                                break;
+                            case "MedEssentials 4th Ed":
+                                Assert.assertTrue("MedEssentials 4th Ed was provided, something was returned", !me4e.equals("NA"));
+                                Assert.assertEquals(seekpoint + ", " + returnedTitle, me4e, returnedPageNumbers);
+                                break;
+                            case "MedEssentials 3rd Ed":
+                                Assert.assertTrue("MedEssentials 3rd Ed was provided, something was returned", !me3e.equals("NA"));
+                                Assert.assertEquals(seekpoint + ", " + returnedTitle, me3e, returnedPageNumbers);
+                                break;
+                            case "Pathoma":
+                                Assert.assertTrue("Pathoma was provided, something was returned", !pathoma.equals("NA"));
+                                Assert.assertEquals(seekpoint + ", " + returnedTitle, pathoma, returnedPageNumbers);
+                                break;
+                            default:
+                                System.out.println("No page refs found for " + seekpoint);
+                                break;
+                        }
+                }
+            }
+
+        }
+
+    }
+
+
+
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="0" passed="0">
+  <reporter-output>
+  </reporter-output>
+  <suite name="med.OLP.regression.OlpRegressionRunner" duration-ms="3" started-at="2015-01-28T20:47:43Z" finished-at="2015-01-28T20:47:43Z">
+    <groups>
+    </groups>
+    <test name="Command line test" duration-ms="3" started-at="2015-01-28T20:47:43Z" finished-at="2015-01-28T20:47:43Z">
+    </test> <!-- Command line test -->
+  </suite> <!-- med.OLP.regression.OlpRegressionRunner -->
+</testng-results>

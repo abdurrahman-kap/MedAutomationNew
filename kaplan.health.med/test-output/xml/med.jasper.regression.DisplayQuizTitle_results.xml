@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Regression"
+           tests="42"
+           failures="0"
+           errors="0"
+           skipped="42"
+           time="0.010">
+  <properties />
+  
+            <testcase name="beforeMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="beforeMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="afterMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="afterMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="afterMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="beforeMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="beforeMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="beforeMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="afterMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="beforeMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="afterMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="afterMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="beforeMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="beforeMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="beforeMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="beforeMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="afterMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="afterMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="beforeMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="beforeMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="beforeMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="afterMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="afterMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="beforeMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="afterMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="afterMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="afterMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="afterMethod" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="verifyDisplayReproductiveQuiztitle" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="VerifyDisplayInfectiousDiseaseQuiztitle" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="VerifyDisplayGastroenterologyQuiztitle" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="VerifyDisplayEpidemiologyQuiztitle" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="verifyDisplayBiochemistryQuiztitle" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="VerifyDisplayImmunologyQuiztitle" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="VerifyDisplayPharmacologyQuiztitle" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="VerifyDisplayEndocrinologyQuiztitle" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="VerifyDisplayNephrologyQuiztitle" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="VerifyDisplayCardiologyQuiztitle" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="VerifyDisplayBehavioralQuiztitle" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="VerifyDisplayRespiratoryQuiztitle" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="VerifyDisplayMusculoskeletalQuiztitle" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+            <testcase name="vverifyDisplayNeuroscienceQuiztitle" time="0.0" classname="med.jasper.regression.DisplayQuizTitle">
+          <skipped />
+    </testcase>
+  
+  
+</testsuite>

@@ -1,0 +1,27 @@
+package com.kaplan.qa.nursing.controller;
+
+import org.openqa.selenium.WebDriver;
+
+import com.kaplan.qa.nursing.model.NursingFacultyReportPageModel;
+import com.kaplan.qa.nursing.model.ReoprtHomePageModel;
+
+public class ReoprtHomePageController {
+
+	WebDriver driver;
+	private ReoprtHomePageModel homepage;
+	private NursingFacultyReportPageModel facultyReport ;
+	
+	public ReoprtHomePageController(WebDriver driver){
+		this.driver = driver;
+		homepage = new ReoprtHomePageModel(driver);
+		facultyReport = new NursingFacultyReportPageModel(driver);
+	}
+	
+	public void verifyNursingFacultyPage(){
+		homepage.clickOnNursingfacultyStudentReportCard();
+		homepage.waitFor(2);
+		facultyReport.selectProgramOfStudy("PN");
+		
+	}
+
+}

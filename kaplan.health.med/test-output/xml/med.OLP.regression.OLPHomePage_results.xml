@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Regression"
+           tests="9"
+           failures="0"
+           errors="0"
+           skipped="9"
+           time="0.000">
+  <properties />
+  
+            <testcase name="afterMethod" time="0.0" classname="med.OLP.regression.OLPHomePage">
+          <skipped />
+    </testcase>
+            <testcase name="beforeMethod" time="0.0" classname="med.OLP.regression.OLPHomePage">
+          <skipped />
+    </testcase>
+            <testcase name="afterMethod" time="0.0" classname="med.OLP.regression.OLPHomePage">
+          <skipped />
+    </testcase>
+            <testcase name="beforeMethod" time="0.0" classname="med.OLP.regression.OLPHomePage">
+          <skipped />
+    </testcase>
+            <testcase name="afterMethod" time="0.0" classname="med.OLP.regression.OLPHomePage">
+          <skipped />
+    </testcase>
+            <testcase name="beforeMethod" time="0.0" classname="med.OLP.regression.OLPHomePage">
+          <skipped />
+    </testcase>
+            <testcase name="testContents" time="0.0" classname="med.OLP.regression.OLPHomePage">
+          <skipped />
+    </testcase>
+            <testcase name="followingSyllabusPaths" time="0.0" classname="med.OLP.regression.OLPHomePage">
+          <skipped />
+    </testcase>
+            <testcase name="testing1212" time="0.0" classname="med.OLP.regression.OLPHomePage">
+          <skipped />
+    </testcase>
+  
+  
+</testsuite>

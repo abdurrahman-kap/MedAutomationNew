@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Regression"
+           tests="18"
+           failures="0"
+           errors="0"
+           skipped="18"
+           time="0.000">
+  <properties />
+  
+            <testcase name="beforeMethod" time="0.0" classname="med.OLP.regression.RegressionForOLPProducts">
+          <skipped />
+    </testcase>
+            <testcase name="afterMethod" time="0.0" classname="med.OLP.regression.RegressionForOLPProducts">
+          <skipped />
+    </testcase>
+            <testcase name="afterMethod" time="0.0" classname="med.OLP.regression.RegressionForOLPProducts">
+          <skipped />
+    </testcase>
+            <testcase name="afterMethod" time="0.0" classname="med.OLP.regression.RegressionForOLPProducts">
+          <skipped />
+    </testcase>
+            <testcase name="beforeMethod" time="0.0" classname="med.OLP.regression.RegressionForOLPProducts">
+          <skipped />
+    </testcase>
+            <testcase name="beforeMethod" time="0.0" classname="med.OLP.regression.RegressionForOLPProducts">
+          <skipped />
+    </testcase>
+            <testcase name="beforeMethod" time="0.0" classname="med.OLP.regression.RegressionForOLPProducts">
+          <skipped />
+    </testcase>
+            <testcase name="afterMethod" time="0.0" classname="med.OLP.regression.RegressionForOLPProducts">
+          <skipped />
+    </testcase>
+            <testcase name="beforeMethod" time="0.0" classname="med.OLP.regression.RegressionForOLPProducts">
+          <skipped />
+    </testcase>
+            <testcase name="afterMethod" time="0.0" classname="med.OLP.regression.RegressionForOLPProducts">
+          <skipped />
+    </testcase>
+            <testcase name="afterMethod" time="0.0" classname="med.OLP.regression.RegressionForOLPProducts">
+          <skipped />
+    </testcase>
+            <testcase name="beforeMethod" time="0.0" classname="med.OLP.regression.RegressionForOLPProducts">
+          <skipped />
+    </testcase>
+            <testcase name="VerifyAnalysispageforQbankOLP" time="0.0" classname="med.OLP.regression.RegressionForOLPProducts">
+          <skipped />
+    </testcase>
+            <testcase name="VerifyAnalysispageforQbankOLPproducts" time="0.0" classname="med.OLP.regression.RegressionForOLPProducts">
+          <skipped />
+    </testcase>
+            <testcase name="dateCheck" time="0.0" classname="med.OLP.regression.RegressionForOLPProducts">
+          <skipped />
+    </testcase>
+            <testcase name="VerifyReviewpageforQbankOLPproducts" time="0.0" classname="med.OLP.regression.RegressionForOLPProducts">
+          <skipped />
+    </testcase>
+            <testcase name="VerifyExplanationforQbankOLPproducts" time="0.0" classname="med.OLP.regression.RegressionForOLPProducts">
+          <skipped />
+    </testcase>
+            <testcase name="VerifyTestAnalysisReviewpageforQbankOLP" time="0.0" classname="med.OLP.regression.RegressionForOLPProducts">
+          <skipped />
+    </testcase>
+  
+  
+</testsuite>

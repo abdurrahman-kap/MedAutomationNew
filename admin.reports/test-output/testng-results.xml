@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="29023" started-at="2016-03-23T17:37:52Z" finished-at="2016-03-23T17:38:21Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="29023" started-at="2016-03-23T17:37:52Z" finished-at="2016-03-23T17:38:21Z">
+      <class name="admin.reports.test.AdminLogInPage">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:admin.reports.test.AdminLogInPage@5a01ccaa]" name="beforeMethod" is-config="true" duration-ms="9316" started-at="2016-03-23T13:37:52Z" finished-at="2016-03-23T13:38:01Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="VerifyDisplayedLoginpage()[pri:0, instance:admin.reports.test.AdminLogInPage@5a01ccaa]" name="VerifyDisplayedLoginpage" duration-ms="18545" started-at="2016-03-23T13:38:01Z" finished-at="2016-03-23T13:38:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- VerifyDisplayedLoginpage -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:admin.reports.test.AdminLogInPage@5a01ccaa]" name="afterMethod" is-config="true" duration-ms="1137" started-at="2016-03-23T13:38:20Z" finished-at="2016-03-23T13:38:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- admin.reports.test.AdminLogInPage -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

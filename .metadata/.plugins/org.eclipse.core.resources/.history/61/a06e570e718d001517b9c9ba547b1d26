@@ -1,0 +1,90 @@
+package sendEmailNotification;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+
+import sendEmailNotification.*;
+import sendEmailNotification.EmailNotification.BodyType;
+
+public class sendEmailTest 
+{	
+	//private static Logger log = LogFile.logProgress();
+	static Date currentdate = new Date();
+	public static String []fileNames;
+	static DateFormat DF = new SimpleDateFormat("MM/dd/YY");
+	static String date = DF.format(currentdate).toString();
+	
+	private static String getUrlSource(String url) throws IOException 
+	{
+            URL filename = new URL(url);
+            URLConnection conn = filename.openConnection();
+            BufferedReader in = new BufferedReader(new InputStreamReader(
+                    conn.getInputStream(), "UTF-8"));
+            String inputLine;
+            StringBuilder a = new StringBuilder();
+            while ((inputLine = in.readLine()) != null)
+                a.append(inputLine);
+            in.close();
+
+            return a.toString();
+    }
+	
+	/**
+     * List all the files under a directory
+     * @param directoryName to be listed
+     */
+	public static String[] listFiles(String directoryName)
+    { 	
+    	File directory = new File(directoryName+"\\Excel Results");
+    	
+        //get all the files from a directory
+    	File[] fList = directory.listFiles();
+        if(fList!=null)
+        {
+        	 fileNames = new String[fList.length];
+	        for (int i=0;i<fList.length;i++)
+		            fileNames[i]= fList[i].toString();
+        }
+        return fileNames;
+    }
+
+	public static void EmailNotification(String path)
+	{
+		try
+		{
+			String reportPath = path.replace("\\", "\\\\");
+			String body = getUrlSource("file://////"+reportPath+"\\HTML%20Results\\Summary.html");
+			String [] allFileList = listFiles(reportPath);
+			EmailNotification emailTO = new EmailNotification( Arrays.asList("harpreet_s_balla@homedepot.com","mayank_singh@homedepot.com"/*,"ANBARASAN_VENKATACHALAM@homedepot.com"*/), "no-reply@homedepot.com", 
+					"Sanity Test Results - "+date,body ,  BodyType.HTML );
+			List<EmailAttachment> attachmentList = new ArrayList<EmailAttachment>();
+			
+			for (int i=0;i<allFileList.length;i++)
+			{
+				EmailAttachment attachment = new EmailAttachment();
+				attachment.setAttachmentMimeType( "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" );
+				attachment.setFileName(allFileList[i]);
+				attachmentList.add(attachment);	
+			}
+			emailTO.setAttachments(attachmentList);
+			EmailNotificationSVC.sendEmailNotifcation(emailTO);
+			//log.info("Send email");
+		}
+		catch(Exception e)
+		{
+			//log.info("Got exception while sending Email due to exception --"+e);
+		}
+	}	
+}

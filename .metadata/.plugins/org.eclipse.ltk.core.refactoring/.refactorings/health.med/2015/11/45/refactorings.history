@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;health.med/src/test/resources/testData/NAPLEX Master Syllabus (1).xlsx&apos; to &apos;NAPLEX Master Syllabus.xlsx&apos;" description="Rename resource &apos;NAPLEX Master Syllabus (1).xlsx&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/test/resources/testData/NAPLEX Master Syllabus (1).xlsx" name="NAPLEX Master Syllabus.xlsx" stamp="1446584666427" updateReferences="true"/>
+</session>

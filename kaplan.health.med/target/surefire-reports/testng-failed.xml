@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="0" name="Failed suite [med.OLP.regression.RegressionForOLPProducts]">
+  <test name="Command line test(failed)">
+    <classes>
+      <class name="med.OLP.regression.RegressionForOLPProducts">
+        <methods>
+          <include name="VerifyExplanationforQbankOLPproducts"/>
+          <include name="beforeMethod"/>
+          <include name="VerifyReviewpageforQbankOLPproducts"/>
+          <include name="VerifyTestAnalysisReviewpageforQbankOLP"/>
+          <include name="dateCheck"/>
+          <include name="afterMethod"/>
+        </methods>
+      </class> <!-- med.OLP.regression.RegressionForOLPProducts -->
+    </classes>
+  </test> <!-- Command line test(failed) -->
+</suite> <!-- Failed suite [med.OLP.regression.RegressionForOLPProducts] -->

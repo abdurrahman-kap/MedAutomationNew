@@ -1,0 +1,66 @@
+package testImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.sql.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.formula.EvaluationWorkbook.ExternalSheet;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class excletest {
+    
+	 public static void updateRowNumInExcel() throws Exception {
+	        
+		 String filena = "C:\\Users\\AbRahman\\Desktop\\TimeVerification.xlsx";
+	    	
+	     // FileInputStream fsIP = new FileInputStream(new File("C:\\development\\Book1.xlsx")); //Read the spreadsheet that needs to be updated
+			/*String filePath = System.getProperty("user.dir") + "\\Datatables";
+			String fileName = "Scenario1.xls";
+			String finalStrPath = filePath + "\\" + fileName;*/
+			// System.out.println(finalStrPath);
+			File file = new File( "C:\\Users\\AbRahman\\Desktop\\TimeVerification.xlsx");
+			FileInputStream fsIP = new FileInputStream(file);
+			XSSFWorkbook wb11 = new XSSFWorkbook(fsIP); //Access the workbook
+			XSSFSheet worksheet = wb11.getSheetAt(0); //Access the worksheet, so that we can update / modify it.
+	       
+			worksheet.getRow(0).createCell(4).setCellValue("test");
+			//Cell cell = null; // declare a Cell object
+	        /*Row  = ExternalSheet.getRow(2);	
+	        cell = Row.createCell(2, 2);*/
+	        /*cell.setCellType(Cell.CELL_TYPE_STRING);
+	        cell = worksheet.getRow(3).getCell(4);   // Access the second cell in second row to update the value
+	        System.out.println(cell.getCellType());*/
+	      //System.out.println("cell value : " +cell.getStringCellValue().trim()+1);
+	      //System.out.println("cell value : " +cell.getStringCellValue().trim());
+	      //String  cellValue = cell.getStringCellValue().trim();
+	      //int newcellValue = Integer.parseInt(cellValue)+1;
+	     // String testval = "test value";
+		  //System.out.println( "New string value " + newcellValue);
+		    //cell.setCellValue(String.valueOf(testval));
+	        //fsIP.close(); //Close the InputStream
+	       // File file2 = new File(filena);
+	        FileOutputStream output_file = new FileOutputStream(file);  //Open FileOutputStream to write updates
+	        wb11.write(output_file); //write changes
+	        output_file.close();  
+		}
+	
+	public static void main(String[] args) throws Exception {
+    	//String filena = "C:\\Users\\AbRahman\\Desktop\\TimeVerification.xlsx";
+		updateRowNumInExcel();
+    }
+}

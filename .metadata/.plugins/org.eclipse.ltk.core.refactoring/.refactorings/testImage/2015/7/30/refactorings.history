@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;message1&apos; in &apos;PDFEmail.TestPDFReportEmail.sendMailAttach(...)&apos; to &apos;message&apos;&#x0D;&#x0A;- Original project: &apos;testImage&apos;&#x0D;&#x0A;- Original element: &apos;PDFEmail.TestPDFReportEmail.sendMailAttach(String, String, String, String).message1&apos;&#x0D;&#x0A;- Renamed element: &apos;message1&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;message1&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src\/test\/java&lt;PDFEmail{TestPDFReportEmail.java[TestPDFReportEmail~sendMailAttach~QString;~QString;~QString;~QString;@message1!4598!4645!4610!4617!QMimeMessage;!0!false" name="message" references="true" stamp="1437589102312" version="1.0"/>
+</session>

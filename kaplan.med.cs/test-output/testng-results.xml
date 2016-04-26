@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="19901" started-at="2015-10-05T14:54:49Z" finished-at="2015-10-05T14:55:09Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="19901" started-at="2015-10-05T14:54:49Z" finished-at="2015-10-05T14:55:09Z">
+      <class name="med.cs.test.CSLoginPage">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:med.cs.test.CSLoginPage@4c203ea1]" name="beforeMethod" is-config="true" duration-ms="3387" started-at="2015-10-05T10:54:49Z" finished-at="2015-10-05T10:54:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="Verifylogin()[pri:0, instance:med.cs.test.CSLoginPage@4c203ea1]" name="Verifylogin" duration-ms="15467" started-at="2015-10-05T10:54:52Z" finished-at="2015-10-05T10:55:08Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verifylogin -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:med.cs.test.CSLoginPage@4c203ea1]" name="afterMethod" is-config="true" duration-ms="1027" started-at="2015-10-05T10:55:08Z" finished-at="2015-10-05T10:55:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- med.cs.test.CSLoginPage -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
